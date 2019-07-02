@@ -68,6 +68,28 @@ describe RavenProcessors::Fingerprint, '#process' do
         expect(subject).to eq data.merge(fingerprint: ['FooError', "/foo/bar/baz.rb:272:in `parse'"])
       end
     end
+
+    context 'when exception has no stacktrace' do
+      let(:data) do
+        {
+          event_id: '4f56e5382be8419aaa47bba6c2b20842',
+          exception: {
+            values: [
+              {
+                stacktrace: nil,
+                type: 'FooError',
+                module: 'Bar',
+                value: 'Some description'
+              }
+            ]
+          }
+        }
+      end
+
+      it 'returns data with a generated fingerprint' do
+        expect(subject).to eq data.merge(fingerprint: ['FooError'])
+      end
+    end
   end
 
   context 'when data contains no exception & no fingerprint' do

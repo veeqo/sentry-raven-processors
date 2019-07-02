@@ -19,8 +19,8 @@ module RavenProcessors
     def build_fingerprint(exception)
       [
         exception.fetch(:type),
-        frame_to_line(exception[:stacktrace][:frames].last)
-      ]
+        frame_to_line(exception.dig(:stacktrace, :frames)&.last)
+      ].compact
     end
 
     def frame_to_line(frame)
