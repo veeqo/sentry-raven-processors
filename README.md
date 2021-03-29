@@ -1,4 +1,8 @@
-# Additional Sentry Raven processors [![Build Status](https://travis-ci.com/veeqo/sentry-raven-processors.svg?branch=master)](https://travis-ci.com/veeqo/sentry-raven-processors)
+# DEPRECATED
+
+Consider using [Fingerprint Rules](https://docs.sentry.io/product/sentry-basics/guides/grouping-and-fingerprints/#fingerprint-rules) instead.
+
+## Additional Sentry Raven processors [![Build Status](https://travis-ci.com/veeqo/sentry-raven-processors.svg?branch=master)](https://travis-ci.com/veeqo/sentry-raven-processors)
 
 List of processors:
 1. `RavenProcessors::Fingerprint` - replaces '{{default}}' fingerprint with combination of error class name and its line from stack trace.
